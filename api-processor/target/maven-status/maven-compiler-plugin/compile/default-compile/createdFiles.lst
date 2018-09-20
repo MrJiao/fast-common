@@ -1,0 +1,3 @@
+com/jackson/common/api/processor/PropertiesProcessor.class
+com/jackson/common/api/processor/PropertiesProcessor2.class
+META-INF/services/javax.annotation.processing.Processor

@@ -1,0 +1,21 @@
+2018-09-19 11:23:26.007 [main] INFO  com.jackson.common.temp.Main - Starting Main on localhost with PID 12041 (/Users/jiaoyubing/work_space/localworkspace/jackson_common/use-temp/target/classes started by jiaoyubing in /Users/jiaoyubing/work_space/localworkspace/jackson_common)
+2018-09-19 11:23:26.011 [main] INFO  com.jackson.common.temp.Main - No active profile set, falling back to default profiles: default
+2018-09-19 11:23:26.122 [main] INFO  org.springframework.context.annotation.AnnotationConfigApplicationContext - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3cc2931c: startup date [Wed Sep 19 11:23:26 CST 2018]; root of context hierarchy
+2018-09-19 11:23:26.954 [main] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-09-19 11:23:27.030 [main] INFO  com.jackson.common.temp.Main - Started Main in 1.629 seconds (JVM running for 3.67)
+2018-09-19 11:23:27.037 [Thread-2] INFO  org.springframework.context.annotation.AnnotationConfigApplicationContext - Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@3cc2931c: startup date [Wed Sep 19 11:23:26 CST 2018]; root of context hierarchy
+2018-09-19 11:23:27.039 [Thread-2] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2018-09-19 11:24:26.323 [main] INFO  com.jackson.common.temp.Main - Starting Main on localhost with PID 12049 (/Users/jiaoyubing/work_space/localworkspace/jackson_common/use-temp/target/classes started by jiaoyubing in /Users/jiaoyubing/work_space/localworkspace/jackson_common)
+2018-09-19 11:24:26.325 [main] INFO  com.jackson.common.temp.Main - No active profile set, falling back to default profiles: default
+2018-09-19 11:24:26.465 [main] INFO  org.springframework.context.annotation.AnnotationConfigApplicationContext - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@20d28811: startup date [Wed Sep 19 11:24:26 CST 2018]; root of context hierarchy
+2018-09-19 11:24:27.278 [main] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-09-19 11:24:27.372 [main] INFO  com.jackson.common.temp.Main - Started Main in 1.615 seconds (JVM running for 3.17)
+2018-09-19 11:24:27.382 [Thread-2] INFO  org.springframework.context.annotation.AnnotationConfigApplicationContext - Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@20d28811: startup date [Wed Sep 19 11:24:26 CST 2018]; root of context hierarchy
+2018-09-19 11:24:27.385 [Thread-2] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2018-09-19 11:34:03.469 [main] INFO  com.jackson.common.temp.Main - Starting Main on localhost with PID 12094 (/Users/jiaoyubing/work_space/localworkspace/jackson_common/use-temp/target/classes started by jiaoyubing in /Users/jiaoyubing/work_space/localworkspace/jackson_common)
+2018-09-19 11:34:03.471 [main] INFO  com.jackson.common.temp.Main - No active profile set, falling back to default profiles: default
+2018-09-19 11:34:03.681 [main] INFO  org.springframework.context.annotation.AnnotationConfigApplicationContext - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@20d28811: startup date [Wed Sep 19 11:34:03 CST 2018]; root of context hierarchy
+2018-09-19 11:34:05.054 [main] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-09-19 11:34:05.100 [main] INFO  com.jackson.common.temp.Main - Started Main in 2.02 seconds (JVM running for 2.984)
+2018-09-19 11:34:05.104 [Thread-2] INFO  org.springframework.context.annotation.AnnotationConfigApplicationContext - Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@20d28811: startup date [Wed Sep 19 11:34:03 CST 2018]; root of context hierarchy
+2018-09-19 11:34:05.105 [Thread-2] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
