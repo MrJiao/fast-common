@@ -23,6 +23,7 @@ import java.util.Set;
  * Create by: Jackson
  */
 //@AutoService(Processor.class)
+@SupportedSourceVersion(SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes(value = {"com.jackson.common.api.annotation.PropertiesBean"})
 public class PropertiesProcessor extends AbstractProcessor {
 
@@ -37,12 +38,13 @@ public class PropertiesProcessor extends AbstractProcessor {
 
         StringBuilder builder = new StringBuilder()
                 .append("package com.jackson.common.api;\n\n")
-                .append("public class GeneratedClass {\n\n")
+                .append("public class Temp {\n\n")
                 .append("\tpublic String getMessage() {\n")
                 .append("\t\treturn \"");
 
         //获取所有被CustomAnnotation修饰的代码元素
         for (Element element : roundEnvironment.getElementsAnnotatedWith(PropertiesBean.class)) {
+
             List<? extends Element> enclosedElements = element.getEnclosedElements();
             Element enclosingElement = element.getEnclosingElement();
             List<? extends AnnotationMirror> annotationMirrors = element.getAnnotationMirrors();
@@ -58,8 +60,7 @@ public class PropertiesProcessor extends AbstractProcessor {
         //将String写入并生成.class文件
         try {
             JavaFileObject source = processingEnv.getFiler().createSourceFile(
-                    "com.jackson.common.api.GeneratedClass");
-
+                    "com.jackson.common.api.Temp");
             Writer writer = source.openWriter();
             writer.write(builder.toString());
             writer.flush();
@@ -76,13 +77,4 @@ public class PropertiesProcessor extends AbstractProcessor {
         return SourceVersion.latestSupported();
     }
 
-    @Override
-    public Set<String> getSupportedAnnotationTypes() {
-        return super.getSupportedAnnotationTypes();
-    }
-
-    @Override
-    public synchronized void init(ProcessingEnvironment processingEnv) {
-        super.init(processingEnv);
-    }
 }

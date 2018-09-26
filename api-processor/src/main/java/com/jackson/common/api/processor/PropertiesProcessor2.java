@@ -6,23 +6,27 @@ import com.jackson.common.api.annotation.PropertiesBean;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.AnnotationMirror;
 import javax.lang.model.element.Element;
-import javax.lang.model.element.Modifier;
+import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
+import java.io.File;
 import java.io.IOException;
-import java.io.Writer;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.Set;
+import java.util.jar.JarFile;
+import java.util.zip.ZipEntry;
 
 /**
  * Create by: Jackson
  */
-@AutoService(Processor.class)
+//@AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes(value = {"com.jackson.common.api.annotation.PropertiesBean"})
 public class PropertiesProcessor2 extends AbstractProcessor {
@@ -36,23 +40,22 @@ public class PropertiesProcessor2 extends AbstractProcessor {
         JavaFileObject classFile;
         Filer filer = processingEnv.getFiler();
         Set<? extends Element> elementsAnnotatedWith = roundEnvironment.getElementsAnnotatedWith(PropertiesBean.class);
-        for (Element element : elementsAnnotatedWith) {
-            String className = element.getSimpleName().toString();
-            List<? extends Element> enclosedElements = element.getEnclosedElements();
-            Element[] elements = new Element[enclosedElements.size()];
-            elements = enclosedElements.toArray(elements);
-            try {
-                classFile = filer.createSourceFile("My" + className, elements);
-                Writer writer = classFile.openWriter();
-                writer.flush();
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
+
+
+        URL resource = this.getClass().getResource("/");
+        URL resource1 = this.getClass().getClassLoader().getResource("/");
+        String runtimePath = System.getProperty("user.dir");
+        URL systemResource = ClassLoader.getSystemResource("");
+        String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+
+        try {
+            JarFile jarFile = new JarFile(path);
+            ZipEntry temp = jarFile.getEntry("domain");
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-       // processingEnv.
 
         return false;
     }
