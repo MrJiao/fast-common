@@ -4,6 +4,7 @@ import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.net.URL;
@@ -16,25 +17,39 @@ import java.util.zip.ZipEntry;
  * Create by: Jackson
  */
 public class TemplateManager {
-
+    TemplateString templateString = new TemplateString();
     /**
      * 获取resources下的模板数据
      * @param fileName
      * @return
      */
     public  String getTemplateStr(String fileName){
+        //return templateString.get(fileName);
         InputStream inputStream = null;
+        String path = "";
         try {
-            URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
-            String path = location.getFile();
+            //打包时获取到的地址
             //  String path = "/Users/jiaoyubing/.m2/repository/com/jackson/common/api-processor/0.0.1-SNAPSHOT/api-processor-0.0.1-SNAPSHOT.jar";
-            JarFile jarFile = new JarFile(path);
-            ZipEntry temp = jarFile.getEntry(fileName);
-            inputStream = jarFile.getInputStream(temp);
+            //直接执行时获取到的地址
+            // String path = "/Users/jiaoyubing/work_space/localworkspace/jackson_common/common-properties/target/classes/";
+            path = getTemplateFilePath(fileName);
+
+            if(path.endsWith(".jar")){
+                JarFile jarFile = new JarFile(path);
+                ZipEntry properties = jarFile.getEntry(fileName);
+                inputStream = jarFile.getInputStream(properties);
+            }else {
+                inputStream = new FileInputStream(new File(path,fileName));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return new String(readStream(inputStream));
+    }
+
+    private String getTemplateFilePath(String fileName) {
+        URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+        return location.getFile();
     }
 
 
@@ -58,7 +73,6 @@ public class TemplateManager {
         out.close();
     }
 
-
     private byte[] readStream(InputStream inputStream)  {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
@@ -76,7 +90,6 @@ public class TemplateManager {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
 
         return outputStream.toByteArray();

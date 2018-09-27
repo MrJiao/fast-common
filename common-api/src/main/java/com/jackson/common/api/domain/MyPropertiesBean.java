@@ -1,22 +1,22 @@
 package com.jackson.common.api.domain;
 
 
+import com.jackson.common.properties.annotation.PathTemp;
 import com.jackson.common.properties.annotation.PropertiesBean;
 
 /**
  * Create by: Jackson
  */
 @PropertiesBean
+@PathTemp
 public class MyPropertiesBean {
 
 
     private String name;
 
-    public String getName() {
-        return name;
-    }
+    private Object obj;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    private int a;
+
+    private Long b;
 }

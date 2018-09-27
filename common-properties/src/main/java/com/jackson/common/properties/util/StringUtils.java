@@ -5,7 +5,9 @@ package com.jackson.common.properties.util;
  */
 public class StringUtils {
 
-
+    public static boolean isEmpty(final CharSequence cs) {
+        return cs == null || cs.length() == 0;
+    }
 
 
     public static boolean equals(final CharSequence cs1, final CharSequence cs2) {

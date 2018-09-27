@@ -3,9 +3,10 @@ package com.jackson.common.properties.processor;
 
 import com.google.auto.service.AutoService;
 import com.jackson.common.properties.TemplateManager;
-import com.jackson.common.properties.annotation.PropertiesBean;
+import com.jackson.common.properties.annotation.PathTemp;
 import com.jackson.common.properties.domain.PropertiesField;
 import com.jackson.common.properties.domain.PropertiesMapper;
+import com.jackson.common.properties.util.ProcessUtil;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
@@ -13,15 +14,17 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.JavaFileObject;
 import java.io.Writer;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.Set;
 
 /**
  * Create by: Jackson
  */
-@AutoService(Processor.class)
+//@AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_8)//这里写支持的版本
-@SupportedAnnotationTypes(value = {"com.jackson.common.properties.annotation.PropertiesBean"})//这里写这个处理器可以处理的注解
-public class PropertiesExample extends AbstractProcessor {
+@SupportedAnnotationTypes(value = {"com.jackson.common.properties.annotation.PathTemp"})//这里写这个处理器可以处理的注解
+public class PathProcessor extends AbstractProcessor {
 
     //在这里执行处理过程，可能会被调用多次
     //return true:注解生成了其他新的注解 false:没有
@@ -29,19 +32,26 @@ public class PropertiesExample extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnvironment) {
         try {
 
-            for (Element element : roundEnvironment.getElementsAnnotatedWith(PropertiesBean.class)) {
+            for (Element element : roundEnvironment.getElementsAnnotatedWith(PathTemp.class)) {
                 PropertiesMapper propertiesMapper = getPropertiesMapper();
                 JavaFileObject source = processingEnv.getFiler().createSourceFile(
                         propertiesMapper.getPackageName() + "." + propertiesMapper.getClassName());
                 Writer writer = source.openWriter();
 
                 TemplateManager templateManager = new TemplateManager();
-                String fileName = "temp.ftl";
-                templateManager.process(fileName, propertiesMapper, writer);
+
+                URL location = templateManager.getClass().getProtectionDomain().getCodeSource().getLocation();
+                String path = location.getFile();
+
+                String fileName = "pathTemp";
+
+                HashMap<String, String> map = new HashMap<>();
+                map.put("path",path);
+                templateManager.process(fileName, map, writer);
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            ProcessUtil.printError(annotations,processingEnv,roundEnvironment,e);
         }
 
         return false;
@@ -49,7 +59,7 @@ public class PropertiesExample extends AbstractProcessor {
 
 
     private PropertiesMapper getPropertiesMapper() {
-        PropertiesMapper propertiesMapper = new PropertiesMapper();
+        PropertiesMapper propertiesMapper = new PropertiesMapper("","");
         propertiesMapper.setClassName("Temp_Properties");
         propertiesMapper.setPackageName("com.jackson.common.api");
         propertiesMapper.addField(new PropertiesField("String","field1"));
@@ -57,6 +67,7 @@ public class PropertiesExample extends AbstractProcessor {
         propertiesMapper.addField(new PropertiesField("float","field3"));
         return propertiesMapper;
     }
+
 
 
 }

@@ -1,6 +1,7 @@
 package ${packageName};
 
 import com.jackson.common.properties.BaseProperties;
+import com.jackson.common.properties.util.StringUtils;
 import java.io.File;
 import java.util.Properties;
 
@@ -14,7 +15,10 @@ public class ${className} extends BaseProperties {
         Properties properties = init(file);
 
         <#list fieldList as field>
-            ${field.name} = ${field.paseFunc}(properties.getProperty("${field.name}"));
+            String ${field.name}Str = properties.getProperty("${field.name}");
+            if(!StringUtils.isEmpty(${field.name}Str)){
+                this.${field.name} = ${field.paseFunc}(${field.name}Str);
+            }
         </#list>
     }
 
@@ -28,8 +32,9 @@ public class ${className} extends BaseProperties {
         this.${field.name} = ${field.name};
       }
 
-      public void store${field.name?cap_first}(${field.type} value){
-        storeProperties("${field.name}",value+"");
+      public void store${field.name?cap_first}(${field.type} ${field.name}){
+        set${field.name?cap_first}(${field.name});
+        storeProperties("${field.name}",String.valueOf(${field.name}));
       }
     </#list>
 

@@ -13,6 +13,11 @@ public class PropertiesMapper {
     private String className;
     private List<PropertiesField> fieldList = new ArrayList<>(1);
 
+    public PropertiesMapper(String packageName, String className) {
+        this.packageName = packageName;
+        this.className = className+"_Properties";
+    }
+
 
     public String getPackageName() {
         return packageName;

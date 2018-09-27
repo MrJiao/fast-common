@@ -15,22 +15,22 @@ public class PropertiesField {
     }
 
     private void initParseFunc(String type) {
-        if(StringUtils.equals(type,"int")|| StringUtils.equals(type,"Integer")){
+        if(StringUtils.equals(type,"int")|| StringUtils.equals(type,"Integer")||StringUtils.equals(type,"java.lang.Integer")){
             paseFunc = "Integer.parseInt";
-        }else if(StringUtils.equals(type,"long")|| StringUtils.equals(type,"Long")){
+        }else if(StringUtils.equals(type,"long")|| StringUtils.equals(type,"Long")|| StringUtils.equals(type,"java.lang.Long")){
             paseFunc = "Long.parseLong";
-        }else if(StringUtils.equals(type,"byte")|| StringUtils.equals(type,"Byte")){
+        }else if(StringUtils.equals(type,"byte")|| StringUtils.equals(type,"Byte")|| StringUtils.equals(type,"java.lang.Byte")){
             paseFunc = "Byte.parseByte";
-        }else if(StringUtils.equals(type,"double")|| StringUtils.equals(type,"Double")){
+        }else if(StringUtils.equals(type,"double")|| StringUtils.equals(type,"Double")|| StringUtils.equals(type,"java.lang.Double")){
             paseFunc = "Double.parseDouble";
-        }else if(StringUtils.equals(type,"float")|| StringUtils.equals(type,"Float")){
+        }else if(StringUtils.equals(type,"float")|| StringUtils.equals(type,"Float")|| StringUtils.equals(type,"java.lang.Float")){
             paseFunc = "Float.parseFloat";
-        }else if(StringUtils.equals(type,"short")|| StringUtils.equals(type,"Short")){
+        }else if(StringUtils.equals(type,"short")|| StringUtils.equals(type,"Short")|| StringUtils.equals(type,"java.lang.Short")){
             paseFunc = "Short.parseShort";
-        }else if(StringUtils.equals(type,"boolean")|| StringUtils.equals(type,"Boolean")){
+        }else if(StringUtils.equals(type,"boolean")|| StringUtils.equals(type,"Boolean")|| StringUtils.equals(type,"java.lang.Boolean")){
             paseFunc = "Boolean.parseBoolean";
         }else {
-            paseFunc="";
+            paseFunc="("+type+")";
         }
     }
 
