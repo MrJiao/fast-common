@@ -8,8 +8,6 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
@@ -17,14 +15,12 @@ import java.util.zip.ZipEntry;
  * Create by: Jackson
  */
 public class TemplateManager {
-    TemplateString templateString = new TemplateString();
     /**
      * 获取resources下的模板数据
      * @param fileName
      * @return
      */
     public  String getTemplateStr(String fileName){
-        //return templateString.get(fileName);
         InputStream inputStream = null;
         String path = "";
         try {

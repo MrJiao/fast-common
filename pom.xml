@@ -8,8 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>common-api</module>
-        <module>api-processor</module>
-        <module>api-annotation</module>
         <module>common-properties</module>
     </modules>
     <packaging>pom</packaging>
@@ -24,7 +22,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <common-properties-version>0.0.11-SNAPSHOT</common-properties-version>
 
 
     </properties>
@@ -40,7 +37,7 @@
             <dependency>
                 <groupId>com.jackson.common</groupId>
                 <artifactId>common-properties</artifactId>
-                <version>${common-properties-version}</version>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
             <dependency>
@@ -54,12 +51,6 @@
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
                 <scope>test</scope>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>3.7</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
             <dependency>
