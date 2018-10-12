@@ -9,6 +9,7 @@
     <modules>
         <module>common-api</module>
         <module>common-properties</module>
+        <module>common-example</module>
     </modules>
     <packaging>pom</packaging>
 
